@@ -4,10 +4,14 @@
 #ifndef _SERVER_H_
 #define _SERVER_H_
 
-#include <sys/ipc.h>
-#include <sys/shm.h>
+#include <sys/socket.h>
 #include <sys/types.h>
+#include <unistd.h>
 
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
+#include <cstring>
 #include <string>
 #include <iostream>
 
@@ -19,35 +23,32 @@ public:
   Server();
 	virtual ~Server() = 0;
 
-  key_t getInputMemoryKey();
-  key_t getOutputMemoryKey();
-
-	void setInputMemoryKey(key_t key);
-	void setOutputMemoryKey(key_t key);
-
   void myRegister();
 
-	virtual void run() = 0;
+
+	void init();
+	void run();
+	virtual void* work(void *inputMessage) = 0;
 
 protected:
-  key_t inputMemoryKey;
-	key_t outputMemoryKey;
-
-  int inputMemoryId;
-	int outputMemoryId;
-
-  void *inputMemory;
-	void *outputMemory;
-
   std::string name;
+
+  int listenSocket;
+	int clientSocket;
+
+	struct sockaddr_in myAddress;
+	struct sockaddr_in clientAddress;
+
+  int port;
  
 	virtual size_t getInputMessageSize() = 0;
 	virtual size_t getOutputMessageSize() = 0;
 
+  void *inputMessage;
+	void *outputMessage;
 
 private:
 
-	void init();
 };
 
 #endif

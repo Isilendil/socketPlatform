@@ -11,18 +11,21 @@ Master::Master()
 	name = "Master";
 
 
-  //inputMemory = new InputMasterMessage;
-	inputMemoryKey = ftok("Master.h", 0);
-	//inputMemoryId = shmget(inputMemoryKey, sizeof(InputMasterMessage), 0666|IPC_CREAT);
-	inputMemoryId = shmget(987, sizeof(InputMasterMessage), 0666|IPC_CREAT);
-	inputMemory = (InputMasterMessage*)shmat(inputMemoryId, 0, 0);
-	inputMemory->clean = true;
+	myAddress.sin_family = AF_INET;
+	myAddress.sin_addr.s_addr = INADDR_ANY;
+	myAddress.sin_port = htons(4444);
 
-	outputMemoryKey = ftok("Master.cpp", 0);
-	outputMemoryId = shmget(987, sizeof(OutputMasterMessage), 0666|IPC_CREAT);
-	//outputMemoryId = shmget(outputMemoryKey, sizeof(OutputMasterMessage), 0666|IPC_CREAT);
-	outputMemory = (OutputMasterMessage*)shmat(outputMemoryId, 0, 0);
-	outputMemory->clean = true;
+	if((listenSocket = socket(PF_INET, SOCK_STREAM, 0)) < 0)
+	{
+		//handle
+	}
+
+	if(bind(listenSocket, (struct sockaddr*)&myAddress, sizeof(struct sockaddr)) < 0)
+	{
+		//handle
+	}
+
+
 }
 
 Master::~Master()
@@ -39,47 +42,47 @@ size_t Master::getOutputMessageSize()
 	return sizeof(OutputMasterMessage);
 }
 
-void Master::serverRegister(string className)
+int Master::serverRegister(string className)
 {
-	if(outputMemory->clean)
-	{
-		key_t temp1 = inputMemoryKey + count;
-		key_t temp2 = outputMemoryKey + count;
-		count ++;
-		serverInformation.push_back(ServerRecord(className, temp1, temp2));
-		outputMemory->inputMemoryKey = temp1;
-		outputMemory->outputMemoryKey = temp2;
-		outputMemory->clean = false;
-		cout << outputMemory->inputMemoryKey << endl;
-		cout << outputMemory->outputMemoryKey << endl;
+	int portTemp = 4444 + count;
+	count ++;
+	serverInformation.push_back(ServerRecord(className, portTemp));
+	cout << outputMemory->inputMemoryKey << endl;
+	cout << outputMemory->outputMemoryKey << endl;
+	cout << "!!" << endl;
 
-		cout << "!!" << endl;
-	}
+	return portTemp;
 }
 
-void Master::serverLookup(string className)
+int Master::clientLookup(string className)
 {
-	if(outputMemory->clean)
+	for(vector<ServerRecord>::iterator iter = serverInformation.begin();
+		 iter != serverInformation.end(); ++iter)
 	{
-		for(vector<ServerRecord>::iterator iter = serverInformation.begin();
-		  iter != serverInformation.end(); ++iter)
+		if(iter->className == className)
 		{
-			if(iter->className == className)
-		  {
-		    outputMemory->inputMemoryKey = iter->inputMemoryKey;
-		    outputMemory->outputMemoryKey = iter->outputMemoryKey;
-		    outputMemory->clean = false;
-			  return;
-		  }
-		}
-		outputMemory->inputMemoryKey = -1;
-		outputMemory->outputMemoryKey = -1;
-		return;
+			return iter->port;
+	  }
 	}
+	return -1;
 }
 
-void Master::run()
+void* Master::work(void *inputMessage)
 {
+	inputMasterMessage = (InputMasterMessage*)inputMessage;
+	string temp = inputMasterMessage->className;
+	int portTemp;
+	if( (InputMasterMessage*)(inputMessage)->type == REGISTER )
+	{
+		portTemp = serverRegister(temp);
+	}
+	else if( (InputMasterMessage*)(inputMessage)->type == LOOKUP )
+	{
+		portTemp = clientLookup(temp);
+	}
+	outputMasterMessage->port = portTemp;
+	return outputMasterMessage;
+	/*
 	while(true)
 	{
 	  if(!inputMemory->clean)
@@ -99,4 +102,5 @@ void Master::run()
 		  inputMemory->clean = true;
 	  }
 	}
+	*/
 }

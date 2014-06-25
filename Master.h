@@ -12,11 +12,10 @@
 class ServerRecord
 {
 public:
-  ServerRecord(std::string p1, key_t p2, key_t p3) 
-	  : className(p1), inputMemoryKey(p2), outputMemoryKey(p3) {}
+  ServerRecord(std::string className_, int port_) 
+	  : className(className_), port(port_) {}
   std::string className;
-	key_t inputMemoryKey;
-	key_t outputMemoryKey;
+	int port;
 };
 
 
@@ -26,19 +25,19 @@ public:
   Master();
   ~Master();
 	
-	void serverRegister(std::string className);
-	void serverLookup(std::string className);
+	int serverRegister(std::string className);
+	int clientLookup(std::string className);
   
-  void run();
+  void* work(void *inputMessage);
 
 protected:
   std::vector<ServerRecord> serverInformation;
 
 private:
-  InputMasterMessage* inputMemory;
-	OutputMasterMessage* outputMemory;
-
 	static int count;
+
+  InputMasterMessage *inputMasterMessage;
+	OutputMasterMessage *outputMasterMessage;
 
 	size_t getInputMessageSize();
 	size_t getOutputMessageSize();
