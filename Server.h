@@ -21,14 +21,14 @@ class Server
 {
 public:
   Server();
-	virtual ~Server() = 0;
+	~Server();
 
   void myRegister();
 
 
 	void init();
-	void run();
-	virtual void* work(void *inputMessage) = 0;
+	void serve();
+	virtual void work() = 0;
 
 protected:
   std::string name;

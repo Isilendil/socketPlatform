@@ -14,13 +14,15 @@ public:
   ServerTester1();
 	~ServerTester1();
 
-	void run();
+	void work();
 
 protected:
   size_t getInputMessageSize();
   size_t getOutputMessageSize();
 
 private:
+  InputServerTester1Message *myInput;
+	OutputServerTester1Message *myOutput;
 
 };
 

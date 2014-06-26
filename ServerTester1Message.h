@@ -7,14 +7,14 @@
 
 struct InputServerTester1Message
 {
-	int n;
-	bool clean;
+	int a;
+	char b[10];
 };
 
 struct OutputServerTester1Message
 {
-	int n;
-	bool clean;
+	int c;
+	char d[10];
 };
 
 #endif

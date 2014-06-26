@@ -5,6 +5,6 @@
 int main()
 {
 	ServerTester1 s;
-	s.run();
+	s.serve();
 	return 0;
 }

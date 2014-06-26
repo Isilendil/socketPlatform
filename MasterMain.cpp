@@ -1,10 +1,9 @@
 #include "Master.h"
 
-#include "SharedMemory.h"
 
 int main()
 {
 	Master m;
-	m.run();
+	m.serve();
 	return 0;
 }

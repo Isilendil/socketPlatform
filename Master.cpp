@@ -10,10 +10,17 @@ Master::Master()
 {
 	name = "Master";
 
+  myInput = new InputMasterMessage;
+	myOutput = new OutputMasterMessage;
+
+	inputMessage = myInput;
+	outputMessage = myOutput;
+
 
 	myAddress.sin_family = AF_INET;
 	myAddress.sin_addr.s_addr = INADDR_ANY;
 	myAddress.sin_port = htons(4444);
+	port = 4444;
 
 	if((listenSocket = socket(PF_INET, SOCK_STREAM, 0)) < 0)
 	{
@@ -30,6 +37,8 @@ Master::Master()
 
 Master::~Master()
 {
+	delete myInput;
+	delete myOutput;
 }
 
 size_t Master::getInputMessageSize()
@@ -47,8 +56,6 @@ int Master::serverRegister(string className)
 	int portTemp = 4444 + count;
 	count ++;
 	serverInformation.push_back(ServerRecord(className, portTemp));
-	cout << outputMemory->inputMemoryKey << endl;
-	cout << outputMemory->outputMemoryKey << endl;
 	cout << "!!" << endl;
 
 	return portTemp;
@@ -67,40 +74,22 @@ int Master::clientLookup(string className)
 	return -1;
 }
 
-void* Master::work(void *inputMessage)
+void Master::work()
 {
-	inputMasterMessage = (InputMasterMessage*)inputMessage;
-	string temp = inputMasterMessage->className;
+	//myInput = (InputMasterMessage*)inputMessage;
+	string temp = myInput->className;
 	int portTemp;
-	if( (InputMasterMessage*)(inputMessage)->type == REGISTER )
+	if( myInput->type == REGISTER )
 	{
 		portTemp = serverRegister(temp);
 	}
-	else if( (InputMasterMessage*)(inputMessage)->type == LOOKUP )
+	else if( myInput->type == LOOKUP )
 	{
 		portTemp = clientLookup(temp);
 	}
-	outputMasterMessage->port = portTemp;
-	return outputMasterMessage;
-	/*
-	while(true)
-	{
-	  if(!inputMemory->clean)
-	  {
-			char temp[20];
-			strcmp(temp, inputMemory->className);
-			cout << "!" << endl;
-		  if(inputMemory->senderType == SERVER)
-		  {
-				
-        serverRegister(string(temp));
-		  }
-		  else if(inputMemory->senderType = CLIENT)
-		  {
-        serverLookup(string(temp));
-		  }
-		  inputMemory->clean = true;
-	  }
-	}
-	*/
+	myOutput->port = portTemp;
+
+	cout << myInput->type << '\t' << string(myInput->className) << endl;
+	cout << myOutput->port << endl;
+	return;
 }
