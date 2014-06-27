@@ -89,7 +89,6 @@ void Server::myRegister()
 
 void Server::serve()
 {
-  init();
 
 	socklen_t sinSize;
 	int length;
@@ -113,7 +112,7 @@ void Server::serve()
 		//cout << ((OutputMasterMessage*)outputMessage)->port << endl;
     cout << "after work" << endl;
 		if(outputMessage)
-		{
+		{ 
 		  if(send(clientSocket, outputMessage, getOutputMessageSize(), 0) < 0)
 		  {
 			  cout << "send error" << endl;
