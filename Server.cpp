@@ -90,6 +90,8 @@ void Server::myRegister()
 void Server::serve()
 {
 
+  init();
+
 	socklen_t sinSize;
 	int length;
   cout << "start serve" << endl;
