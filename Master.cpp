@@ -53,6 +53,15 @@ size_t Master::getOutputMessageSize()
 
 int Master::serverRegister(string className)
 {
+	for(vector<ServerRecord>::iterator iter = serverInformation.begin();
+		 iter != serverInformation.end(); ++iter)
+	{
+		if(iter->className == className)
+		{
+			return iter->port;
+	  }
+	}
+
 	int portTemp = 4444 + count;
 	count ++;
 	serverInformation.push_back(ServerRecord(className, portTemp));

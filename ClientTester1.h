@@ -4,6 +4,9 @@
 #include "Client.h"
 #include "ServerTester1Message.h"
 
+#ifndef _CLIENTTEST1_H_
+#define _CLIENTTEST1_H_
+
 class ClientTester1 : public Client
 {
 public:
@@ -21,3 +24,5 @@ private:
 	InputServerTester1Message *myOutput;
 
 };
+
+#endif
