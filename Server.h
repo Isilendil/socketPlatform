@@ -28,7 +28,6 @@ public:
 
 	void init();
 	void serve();
-	virtual void work() = 0;
 
 protected:
   std::string name;
@@ -41,6 +40,8 @@ protected:
 
   int port;
  
+	virtual void work() = 0;
+
 	virtual size_t getInputMessageSize() = 0;
 	virtual size_t getOutputMessageSize() = 0;
 

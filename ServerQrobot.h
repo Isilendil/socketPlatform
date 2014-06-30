@@ -15,9 +15,10 @@ public:
   ServerQrobot();
 	~ServerQrobot();
 
-	void work();
 
 protected:
+	void work();
+
   size_t getInputMessageSize();
 	size_t getOutputMessageSize();
 

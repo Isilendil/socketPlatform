@@ -25,7 +25,6 @@ public:
 	void myLookup(std::string serverClassName);
 
 	void init();
-	void request();
 
 	virtual void run() = 0;
 
@@ -42,8 +41,10 @@ protected:
 	void *inputMessage;
 	void *outputMessage;
 
+	void request();
 
 private:
+
 };
 
 #endif

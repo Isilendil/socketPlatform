@@ -14,9 +14,10 @@ public:
   ServerTester1();
 	~ServerTester1();
 
-	void work();
 
 protected:
+	void work();
+
   size_t getInputMessageSize();
   size_t getOutputMessageSize();
 
