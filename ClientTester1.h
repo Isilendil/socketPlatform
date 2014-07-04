@@ -1,11 +1,11 @@
 //ClientTester1.h
 //class ClientTester1
 
-#include "Client.h"
-#include "ServerTester1Message.h"
-
 #ifndef _CLIENTTEST1_H_
 #define _CLIENTTEST1_H_
+
+#include "Client.h"
+#include "ServerTester1Message.h"
 
 class ClientTester1 : public Client
 {

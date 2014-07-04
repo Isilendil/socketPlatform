@@ -1,7 +1,8 @@
 #export LD_LIBRARY_PATH="lib":$$LD_LIBRARY_PATH
 all : MasterMain ServerTester1Main ClientTester1Main \
                  ServerQrobotMain ClientQrobotMain \
-								 ServerCameraMain ClientCameraMain
+								 ServerCameraMain ClientCameraMain \
+                 main
 
 MasterMain : MasterMain.o Master.o Server.o 
 	g++ -o MasterMain MasterMain.o Master.o Server.o 
@@ -74,6 +75,15 @@ ClientCameraMain.o : ClientCameraMain.cpp ClientCamera.h Client.h ServerCameraMe
 ClientCamera.o : ClientCamera.cpp ClientCamera.h Client.h ServerCameraMessage.h MasterMessage.h
 	g++ -c ClientCamera.cpp
 
+main : main.o MainClient.o Client.o
+	g++ -o main main.o MainClient.o Client.o
+
+main.o : main.cpp MainClient.h Client.h ServerCameraMessage.h ServerTester1Message.h MasterMessage.h
+	g++ -c main.cpp
+
+MainClient.o : MainClient.cpp MainClient.h Client.h ServerCameraMessage ServerTester1Message.h MasterMessage.h
+	g++ -c MainClient.cpp
+
 clean : 
 	rm Server.o Client.o \
 	   MasterMain MasterMain.o Master.o \
@@ -82,4 +92,5 @@ clean :
 		 ServerQrobotMain ServerQrobotMain.o ServerQrobot.o \
 		 ClientQrobotMain ClientQrobotMain.o ClientQrobot.o \
 		 ServerCameraMain ServerCameraMain.o ServerCamera.o \
-		 ClientCameraMain ClientCameraMain.o ClientCamera.o
+		 ClientCameraMain ClientCameraMain.o ClientCamera.o \
+		 main main.o MainClient.o

@@ -107,7 +107,7 @@ bool ServerCamera::get_camera()
         cvShowImage("Camera", frame); 
 
 
-	if(now-begin=20)//close after20s
+	if(now-begin==20)//close after20s
 	break;
         
     }  
