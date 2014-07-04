@@ -1,6 +1,7 @@
 #export LD_LIBRARY_PATH="lib":$$LD_LIBRARY_PATH
 all : MasterMain ServerTester1Main ClientTester1Main \
-                 ServerQrobotMain ClientQrobotMain
+                 ServerQrobotMain ClientQrobotMain \
+								 ServerCameraMain ClientCameraMain
 
 MasterMain : MasterMain.o Master.o Server.o 
 	g++ -o MasterMain MasterMain.o Master.o Server.o 
@@ -55,10 +56,30 @@ ClientQrobotMain.o : ClientQrobotMain.cpp ClientQrobot.h Client.h ServerQrobotMe
 ClientQrobot.o : ClientQrobot.cpp ClientQrobot.h Client.h ServerQrobotMessage.h MasterMessage.h
 	g++ -c ClientQrobot.cpp
 
+ServerCameraMain : ServerCameraMain.o ServerCamera.o Server.o
+	g++ -o ServerCameraMain ServerCameraMain.o ServerCamera.o Server.o `pkg-config --libs opencv` 
+
+ServerCameraMain.o : ServerCameraMain.cpp ServerCamera.o Server.o
+	g++ -c ServerCameraMain.cpp `pkg-config --cflags opencv`
+
+ServerCamera.o : ServerCamera.cpp ServerCamera.h Server.h ServerCameraMessage.h MasterMessage.h
+	g++ -c ServerCamera.cpp `pkg-config --cflags opencv` -std=c++11
+
+ClientCameraMain : ClientCameraMain.o ClientCamera.o Client.o
+	g++ -o ClientCameraMain ClientCameraMain.o ClientCamera.o Client.o
+
+ClientCameraMain.o : ClientCameraMain.cpp ClientCamera.h Client.h ServerCameraMessage.h MasterMessage.h
+	g++ -c ClientCameraMain.cpp
+
+ClientCamera.o : ClientCamera.cpp ClientCamera.h Client.h ServerCameraMessage.h MasterMessage.h
+	g++ -c ClientCamera.cpp
+
 clean : 
 	rm Server.o Client.o \
 	   MasterMain MasterMain.o Master.o \
 	   ServerTester1Main ServerTester1Main.o ServerTester1.o \
 		 ClientTester1Main ClientTester1Main.o ClientTester1.o \
-		 ServerQrobotMain ServerQrobotMain.o ServerQrobot.o  \
-		 ClientQrobotMain ClientQrobotMain.o ClientQrobot.o  
+		 ServerQrobotMain ServerQrobotMain.o ServerQrobot.o \
+		 ClientQrobotMain ClientQrobotMain.o ClientQrobot.o \
+		 ServerCameraMain ServerCameraMain.o ServerCamera.o \
+		 ClientCameraMain ClientCameraMain.o ClientCamera.o
