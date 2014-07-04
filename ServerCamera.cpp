@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void waiting()
+/*void waiting()
 {
 	char temp;
 	cin >> temp;
@@ -14,10 +14,10 @@ void waiting()
 	{
 		ServerCamera::flag = true;
 	}
-}
+}*/
 
 
-bool ServerCamera::flag = false;
+//bool ServerCamera::flag = false;
 
 ServerCamera::ServerCamera()
 {
@@ -82,7 +82,8 @@ void ServerCamera::work()
 }
 
 bool ServerCamera::get_camera()  
-{  
+{   time_t begin;
+    time(&begin);
     CvCapture* pCap = cvCreateCameraCapture( -1 );
     IplImage *frame = NULL;  
   
@@ -93,19 +94,21 @@ bool ServerCamera::get_camera()
   
     cvNamedWindow("Camera",CV_WINDOW_FULLSCREEN);  
 
-    thread t1(waiting);
-		t1.join();
+    //thread t1(waiting);
+    //t1.join();
+    //cout << "thread" << endl;
   
-	  cout << "thread" << endl;
-		while ((frame = cvQueryFrame(pCap)) != 0 &&  cvWaitKey(20) != 27)    
+ while ((frame = cvQueryFrame(pCap)) != 0 )    
     {  
-			cout << "while" << endl;
+        time_t now;
+        time(&now);
+	cout << "while" << endl;
         frame = cvQueryFrame(pCap);  
         cvShowImage("Camera", frame); 
 
 
-				if(flag)
-					break;
+	if(now-begin=20)//close after20s
+	break;
         
     }  
   

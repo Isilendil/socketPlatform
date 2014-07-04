@@ -7,6 +7,7 @@
 #include "Server.h"
 #include "ServerCameraMessage.h"
 #include "stdio.h"
+#include <time.h> 
 #include "highgui.h"
 #include "cv.h"
 #include "cxcore.h"
