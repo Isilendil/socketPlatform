@@ -98,18 +98,24 @@ bool ServerCamera::get_camera()
     //t1.join();
     //cout << "thread" << endl;
   
- while ((frame = cvQueryFrame(pCap)) != 0 )    
+ int temp = 0;
+ while ((frame = cvQueryFrame(pCap)) != 0 && cvWaitKey(20) != ' ')    
     {  
         time_t now;
         time(&now);
-	cout << "while" << endl;
+	//cout << "while" << endl;
         frame = cvQueryFrame(pCap);  
         cvShowImage("Camera", frame); 
 
 
 	if(now-begin==20)//close after20s
 	break;
-        
+	/*
+	  if(temp++ == 100)
+		{
+			break;
+		}
+	*/
     }  
   
     cvReleaseCapture(&pCap);    

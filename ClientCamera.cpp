@@ -32,6 +32,8 @@ size_t ClientCamera::getOutputMessageSize()
 void ClientCamera::run()
 {
 	myLookup("ServerCamera");
+	char temp;
+	cin >> temp;
 	myOutput->commandName = getcamera;
 	
 	request();

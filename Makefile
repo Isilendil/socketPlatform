@@ -2,6 +2,7 @@
 all : MasterMain ServerTester1Main ClientTester1Main \
                  ServerQrobotMain ClientQrobotMain \
 								 ServerCameraMain ClientCameraMain \
+								 TextToSpeechMain \
                  main
 
 MasterMain : MasterMain.o Master.o Server.o 
@@ -42,7 +43,7 @@ ServerQrobotMain : ServerQrobotMain.o ServerQrobot.o Server.o
 	g++ -o ServerQrobotMain ServerQrobotMain.o ServerQrobot.o Server.o \
 	    -L"lib" -lqcontroller
 
-ServerQrobotMain.o : ServerQrobotMain.cpp ServerQrobot.o Server.o
+ServerQrobotMain.o : ServerQrobotMain.cpp ServerQrobot.h Server.h ServerQrobotMessage.h MasterMessage.h
 	g++ -c ServerQrobotMain.cpp
 
 ServerQrobot.o : ServerQrobot.cpp ServerQrobot.h Server.h ServerQrobotMessage.h MasterMessage.h
@@ -60,7 +61,7 @@ ClientQrobot.o : ClientQrobot.cpp ClientQrobot.h Client.h ServerQrobotMessage.h 
 ServerCameraMain : ServerCameraMain.o ServerCamera.o Server.o
 	g++ -o ServerCameraMain ServerCameraMain.o ServerCamera.o Server.o `pkg-config --libs opencv` 
 
-ServerCameraMain.o : ServerCameraMain.cpp ServerCamera.o Server.o
+ServerCameraMain.o : ServerCameraMain.cpp ServerCamera.h Server.h ServerCameraMessage.h MasterMessage.h
 	g++ -c ServerCameraMain.cpp `pkg-config --cflags opencv`
 
 ServerCamera.o : ServerCamera.cpp ServerCamera.h Server.h ServerCameraMessage.h MasterMessage.h
@@ -78,11 +79,18 @@ ClientCamera.o : ClientCamera.cpp ClientCamera.h Client.h ServerCameraMessage.h 
 main : main.o MainClient.o Client.o
 	g++ -o main main.o MainClient.o Client.o
 
-main.o : main.cpp MainClient.h Client.h ServerCameraMessage.h ServerTester1Message.h MasterMessage.h
+main.o : main.cpp MainClient.h Client.h ServerCameraMessage.h ServerTester1Message.h MasterMessage.h TextToSpeechMessage.h
 	g++ -c main.cpp
 
-MainClient.o : MainClient.cpp MainClient.h Client.h ServerCameraMessage ServerTester1Message.h MasterMessage.h
+MainClient.o : MainClient.cpp MainClient.h Client.h ServerCameraMessage.h ServerTester1Message.h MasterMessage.h TextToSpeechMessage.h ServerQrobotMessage.h
 	g++ -c MainClient.cpp
+
+TextToSpeechMain : TextToSpeech.o Server.o
+	g++ -o TextToSpeechMain TextToSpeech.o Server.o -L"lib" -lmsc -ldl -lrt
+
+TextToSpeech.o : TextToSpeech.cpp TextToSpeech.h Server.h TextToSpeechMessage.h MasterMessage.h
+	g++ -c TextToSpeech.cpp
+
 
 clean : 
 	rm Server.o Client.o \
@@ -93,4 +101,5 @@ clean :
 		 ClientQrobotMain ClientQrobotMain.o ClientQrobot.o \
 		 ServerCameraMain ServerCameraMain.o ServerCamera.o \
 		 ClientCameraMain ClientCameraMain.o ClientCamera.o \
+		 TextToSpeechMain TextToSpeech.o \
 		 main main.o MainClient.o

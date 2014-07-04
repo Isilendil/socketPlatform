@@ -9,6 +9,8 @@
 #include "ServerTester1Message.h"
 #include "ServerCameraMessage.h"
 #include "ServerQrobotMessage.h"
+//#include "ServerQrobotMessage.h"
+#include "TextToSpeechMessage.h"
 
 /*
  * struct InputServerTester1Message
@@ -44,12 +46,24 @@
  * {
  *   int returnValues[2];
  * };
+ *
+ * struct InputTextToSpeechMessage
+ * {
+ *   char str[20];
+ * };
+ *
+ * struct OutputTextToSpeechMessage
+ * {
+ *   bool ret;
+ * };
  */
 
 enum ServerType
 {
 	SERVERCAMERA,
-	SERVERQROBOT
+	SERVERQROBOT,
+	SERVERTESTER1,
+	TEXTTOSPEECH
 };
 
 class MainClient : public Client

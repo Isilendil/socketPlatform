@@ -1,11 +1,11 @@
 //ClientQrobot.h
 //class ClientQrobot
 
-#include "Client.h"
-#include "ServerQrobotMessage.h"
-
 #ifndef _CLIENTQROBOT_H_
 #define _CLIENTQROBOT_H_
+
+#include "Client.h"
+#include "ServerQrobotMessage.h"
 
 class ClientQrobot : public Client
 {
