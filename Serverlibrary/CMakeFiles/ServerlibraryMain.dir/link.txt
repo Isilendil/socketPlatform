@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.o CMakeFiles/ServerlibraryMain.dir/Server.cpp.o  -o ServerlibraryMain  -L. -rdynamic -lpython2.7 -llibrary -Wl,-rpath,. 

@@ -26,9 +26,52 @@ MainClient::~MainClient()
 void MainClient::run()
 {
 	//开启摄像头
+	/*
+	myLookup("ServerCamera");
+	type = SERVERCAMERA;
+	outputMessage = new InputServerCameraMessage;
+	inputMessage = new OutputServerCameraMessage;
+	((InputServerCameraMessage*)outputMessage)->commandName = getcamera;
+	request();
+	delete (InputServerCameraMessage*)outputMessage;
+	delete (OutputServerCameraMessage*)inputMessage;
+	*/
+
+	
+
 	//接收语音输入
+	char bookName[25] = "machine learning";
+	/*
+	myLookup("ServerCamera");
+	type = SERVERCAMERA;
+	outputMessage = new InputServerCameraMessage;
+	inputMessage = new OutputServerCameraMessage;
+	((InputServerCameraMessage*)outputMessage)->commandName = getcamera;
+	request();
+	delete (InputServerCameraMessage*)outputMessage;
+	delete (OutputServerCameraMessage*)inputMessage;
+	*/
+
+	
+
 	//查询书籍
+	char path[80];
+	myLookup("Serverlibrary");
+	type = SERVERLIBRARY;
+	outputMessage = new InputServerlibraryMessage;
+	inputMessage = new OutputServerlibraryMessage;
+	((InputServerlibraryMessage*)outputMessage)->commandName = searchbookbytitle;
+	strcpy(((InputServerlibraryMessage*)outputMessage)->book, bookName);
+	cout << string(((InputServerlibraryMessage*)outputMessage)->book) << endl;
+	request();
+	strcpy(path, ((OutputServerlibraryMessage*)inputMessage)->path);
+	delete (InputServerlibraryMessage*)outputMessage;
+	delete (OutputServerlibraryMessage*)inputMessage;
+
 	//获得结果
+	cout << string(path) << endl;
+	
+
 	//播放结果
 	myLookup("TextToSpeech");
 	type = TEXTTOSPEECH;
@@ -58,6 +101,9 @@ size_t MainClient::getInputMessageSize()
 		case TEXTTOSPEECH:
 		  return sizeof(OutputTextToSpeechMessage);
 			break;
+		case SERVERLIBRARY:
+		  return sizeof(OutputServerlibraryMessage);
+			break;
 		default:
 			return 0;
 		  break;
@@ -80,6 +126,9 @@ size_t MainClient::getOutputMessageSize()
 		  break;
 		case TEXTTOSPEECH:
 		  return sizeof(InputTextToSpeechMessage);
+			break;
+		case SERVERLIBRARY:
+		  return sizeof(InputServerlibraryMessage);
 			break;
 		default:
 			return 0;

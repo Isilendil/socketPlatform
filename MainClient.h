@@ -11,6 +11,7 @@
 #include "ServerQrobotMessage.h"
 //#include "ServerQrobotMessage.h"
 #include "TextToSpeechMessage.h"
+#include "ServerlibraryMessage.h"
 
 /*
  * struct InputServerTester1Message
@@ -63,7 +64,8 @@ enum ServerType
 	SERVERCAMERA,
 	SERVERQROBOT,
 	SERVERTESTER1,
-	TEXTTOSPEECH
+	TEXTTOSPEECH,
+	SERVERLIBRARY
 };
 
 class MainClient : public Client
