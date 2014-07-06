@@ -12,6 +12,7 @@
 //#include "ServerQrobotMessage.h"
 #include "TextToSpeechMessage.h"
 #include "ServerlibraryMessage.h"
+#include "SpeechToTextMessage.h"
 
 /*
  * struct InputServerTester1Message
@@ -65,6 +66,7 @@ enum ServerType
 	SERVERQROBOT,
 	SERVERTESTER1,
 	TEXTTOSPEECH,
+	SPEECHTOTEXT,
 	SERVERLIBRARY
 };
 

@@ -12,9 +12,25 @@
 #include "Server.h"
 #include "TextToSpeechMessage.h"
 
+//play headers
+#include <malloc.h>   
+#include <getopt.h>  
+#include <fcntl.h>  
+#include <ctype.h>  
+#include <errno.h>  
+#include <limits.h>  
+#include <time.h>  
+#include <locale.h>  
+#include <sys/unistd.h>  
+#include <sys/stat.h>  
+#include <sys/types.h>  
+#include <alsa/asoundlib.h>  
+#include <assert.h>  
+#include "wav_parser.h"  
+#include "sndwav_common.h"  
+
 typedef int SR_DWORD;
 typedef short int SR_WORD ;
-
 
 //音频头部格式
 struct wave_pcm_hdr
@@ -54,13 +70,6 @@ struct wave_pcm_hdr default_pcmwavhdr =
 	0  
 };
 
-/*class tts 
-{
-public:
-	void work();
-};
-*/
-
 class TextToSpeech : public Server
 {
 public:
@@ -81,3 +90,20 @@ private:
   //qrobot::QrobotController &controller;
 };
 
+//play struct
+ssize_t SNDWAV_P_SaveRead(int fd, void *buf, size_t count)  
+{  
+    ssize_t result = 0, res;  
+  
+    while (count > 0) {  
+        if ((res = read(fd, buf, count)) == 0)  
+            break;  
+        if (res < 0)  
+            return result > 0 ? result : res;  
+        count -= res;  
+        result += res;  
+        buf = (char *)buf + res;  
+    }  
+    return result;  
+}  
+  

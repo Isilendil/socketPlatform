@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary
+CMAKE_SOURCE_DIR = /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary
+CMAKE_BINARY_DIR = /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ServerlibraryMain.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/ServerlibraryMain.dir/flags.make
 
 CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.o: CMakeFiles/ServerlibraryMain.dir/flags.make
 CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.o: Serverlibrary.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.o -c /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Serverlibrary.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.o -c /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Serverlibrary.cpp
 
 CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Serverlibrary.cpp > CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Serverlibrary.cpp > CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.i
 
 CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Serverlibrary.cpp -o CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Serverlibrary.cpp -o CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.s
 
 CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.o.requires:
 .PHONY : CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.o.requires
@@ -74,17 +74,17 @@ CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/ServerlibraryMain.dir/Server.cpp.o: CMakeFiles/ServerlibraryMain.dir/flags.make
 CMakeFiles/ServerlibraryMain.dir/Server.cpp.o: Server.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ServerlibraryMain.dir/Server.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ServerlibraryMain.dir/Server.cpp.o -c /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Server.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ServerlibraryMain.dir/Server.cpp.o -c /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Server.cpp
 
 CMakeFiles/ServerlibraryMain.dir/Server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ServerlibraryMain.dir/Server.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Server.cpp > CMakeFiles/ServerlibraryMain.dir/Server.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Server.cpp > CMakeFiles/ServerlibraryMain.dir/Server.cpp.i
 
 CMakeFiles/ServerlibraryMain.dir/Server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ServerlibraryMain.dir/Server.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Server.cpp -o CMakeFiles/ServerlibraryMain.dir/Server.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Server.cpp -o CMakeFiles/ServerlibraryMain.dir/Server.cpp.s
 
 CMakeFiles/ServerlibraryMain.dir/Server.cpp.o.requires:
 .PHONY : CMakeFiles/ServerlibraryMain.dir/Server.cpp.o.requires
@@ -123,6 +123,6 @@ CMakeFiles/ServerlibraryMain.dir/clean:
 .PHONY : CMakeFiles/ServerlibraryMain.dir/clean
 
 CMakeFiles/ServerlibraryMain.dir/depend:
-	cd /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/CMakeFiles/ServerlibraryMain.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/CMakeFiles/ServerlibraryMain.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ServerlibraryMain.dir/depend
 

@@ -6,13 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Server.cpp
-Server.h
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Server.h
-MasterMessage.h
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/MasterMessage.h
+/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/MasterMessage.h
+cstring
+-
 
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Server.h
+/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Server.h
 sys/socket.h
 -
 sys/types.h
@@ -30,21 +28,21 @@ string
 iostream
 -
 MasterMessage.h
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/MasterMessage.h
+/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/MasterMessage.h
 
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Serverlibrary.cpp
+/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Serverlibrary.cpp
 Serverlibrary.h
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Serverlibrary.h
+/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Serverlibrary.h
 unistd.h
 -
 
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Serverlibrary.h
+/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Serverlibrary.h
 Server.h
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Server.h
+/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Server.h
 library.h
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/library.h
+/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/library.h
 
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/ffpython.h
+/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/ffpython.h
 Python.h
 -
 structmember.h
@@ -64,7 +62,7 @@ map
 stdexcept
 -
 
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/library.h
+/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/library.h
 map
 -
 string
@@ -72,7 +70,7 @@ string
 list
 -
 ffpython.h
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/ffpython.h
+/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/ffpython.h
 
 /usr/include/python2.7/Python.h
 patchlevel.h

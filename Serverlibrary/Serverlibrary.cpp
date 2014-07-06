@@ -57,6 +57,8 @@ void Serverlibrary::work()
     int i;
     for (i=0;buf[i]!='\0';i++)
       myOutput->path[i] = buf[i];
+    myOutput->path[i] = '/';
+    i++;
     char *s = "search_book.txt";
     int j;
     for (j=0;s[j] != '\0';j++)
@@ -95,10 +97,15 @@ void Serverlibrary::work()
     char buf[80];
     getcwd(buf,sizeof(buf));
     myOutput->status = l.return_status();
+    /*
     int i;
     for(i=0;buf[i]!='\0';i++)
       myOutput->path[i] = buf[i];
-    myOutput->path[i] = '\0';
+    myOutput->path[i] = '/';
+    */
+    strcat(myOutput->path,buf);
+    strcat(myOutput->path,"/");
+    strcat(myOutput->path,myInput->userid);
   }
 }
 

@@ -23,7 +23,7 @@ struct InputServerlibraryMessage
 struct OutputServerlibraryMessage
 {
       int status;
-      char path[80];
+      char path[100];
 };
 
 #endif

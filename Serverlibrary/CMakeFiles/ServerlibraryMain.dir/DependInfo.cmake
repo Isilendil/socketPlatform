@@ -4,8 +4,8 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Server.cpp" "/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/CMakeFiles/ServerlibraryMain.dir/Server.cpp.o"
-  "/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/Serverlibrary.cpp" "/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.o"
+  "/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Server.cpp" "/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/CMakeFiles/ServerlibraryMain.dir/Server.cpp.o"
+  "/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/Serverlibrary.cpp" "/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/CMakeFiles/ServerlibraryMain.dir/Serverlibrary.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

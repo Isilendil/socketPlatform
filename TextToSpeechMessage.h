@@ -7,7 +7,7 @@
 
 struct InputTextToSpeechMessage
 {
-	char str[20];
+	char str[1024*4];
 };
 
 struct OutputTextToSpeechMessage

@@ -27,7 +27,7 @@ struct InputServerlibraryMessage
 struct OutputServerlibraryMessage
 {
       int status;
-      char path[80];
+      char path[100];
 };
 class Serverlibrary : public Server
 {
@@ -45,7 +45,6 @@ protected:
 private:
 	InputServerlibraryMessage *myInput;
 	OutputServerlibraryMessage *myOutput;
-        std::list<library> librarys;
   //qrobot::QrobotController &controller;
 };
 

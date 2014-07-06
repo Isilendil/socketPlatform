@@ -16,7 +16,7 @@ class ThreadFunc(object):
     def __call__(self):
         apply(self.func,self.args)
 def threadtask(a, search, mylock):
-    temp1 = ['title', 'author', 'publish', 'ISBN/ISSN', 'date', 'booknum', 'type']
+    temp1 = ['btitle', 'author']
     temp = {}
     m = a.td
     for i in range(len(temp1)):
@@ -37,22 +37,31 @@ def borrowtask(a, borrow, mylock):
     m = m.nextSibling
     temp1 = m.string
     temp['returntime'] = temp1
+    '''
     m = m.nextSibling.nextSibling
     temp['renew'] = m.string
+    '''
     mylock.acquire()
     borrow.append(temp)
     mylock.release()
 
 def shelftask(a, shelf, mylock):
-    temp1 = ['title', 'author','publish', 'category', 'type']
+    #temp1 = ['title', 'author','publish', 'category', 'type']
     temp = {}
     m = a.td
+    '''
     for i in range(len(temp1)):
         m = m.nextSibling
         try:
             temp[temp1[i]] = m.string.encode('utf-8')
         except:
             temp[temp1[i]] = ''
+    '''
+    m = m.nextSibling
+    try:
+      temp['title'] = m.string.encode('utf-8')
+    except:
+      temp['title'] = ''
     mylock.acquire()
     shelf.append(temp)
     mylock.release()
@@ -97,6 +106,8 @@ def searchbook(input, way):
         fp.write('None')
         fp.close()
         return search
+    if(len(search) > 5):
+      search = search[0:5]
     for i in range(len(search)):
       for eachKey in search[i]:
         try:
@@ -149,9 +160,9 @@ def library(userid, passwd, way):
         for i in range(len(a)):
             temp1 = a[i].string
             temp2 = a[i].nextSibling.string
-            if(temp2 == None):
-                temp2 = ''
-            personal[temp1.encode('utf-8')] = temp2.encode('utf-8')
+            if(temp2 != None):
+                #temp2 = ''
+              personal[temp1.encode('utf-8')] = temp2.encode('utf-8')
         if("有效" in personal["状态"]):
           personal["状态"] = "有效"
         fp = open(path + '/personal.txt','w+b')
@@ -276,4 +287,9 @@ def library(userid, passwd, way):
         fp.close()
         finance = [debt,bill]
         return finance
+
+result = library('B1321033460','5355365','shelf')
+for i in range(len(result)):
+  for eachKey in result[i]:
+    print result[i][eachKey]
 

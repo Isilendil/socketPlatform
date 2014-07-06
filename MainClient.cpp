@@ -40,22 +40,22 @@ void MainClient::run()
 	
 
 	//接收语音输入
-	char bookName[25] = "machine learning";
-	/*
-	myLookup("ServerCamera");
-	type = SERVERCAMERA;
-	outputMessage = new InputServerCameraMessage;
-	inputMessage = new OutputServerCameraMessage;
-	((InputServerCameraMessage*)outputMessage)->commandName = getcamera;
+	//char bookName[25] = "machine learning";
+	myLookup("SpeechToText");
+	type = SPEECHTOTEXT;
+	outputMessage = new InputSpeechToTextMessage;
+	inputMessage = new OutputSpeechToTextMessage;
+	((InputSpeechToTextMessage*)outputMessage)->input = true;
 	request();
-	delete (InputServerCameraMessage*)outputMessage;
-	delete (OutputServerCameraMessage*)inputMessage;
-	*/
+	cout << string(((OutputSpeechToTextMessage*)inputMessage)->result);
+	delete (InputSpeechToTextMessage*)outputMessage;
+	delete (OutputSpeechToTextMessage*)inputMessage;
 
 	
 
 	//查询书籍
-	char path[80];
+	/*
+	char path[100];
 	myLookup("Serverlibrary");
 	type = SERVERLIBRARY;
 	outputMessage = new InputServerlibraryMessage;
@@ -70,18 +70,21 @@ void MainClient::run()
 
 	//获得结果
 	cout << string(path) << endl;
+	*/
 	
 
 	//播放结果
+	/*
 	myLookup("TextToSpeech");
 	type = TEXTTOSPEECH;
 	outputMessage = new InputTextToSpeechMessage;
 	inputMessage = new OutputTextToSpeechMessage;
-	strcpy(((InputTextToSpeechMessage*)outputMessage)->str, "Miss Tan");
+	strcpy(((InputTextToSpeechMessage*)outputMessage)->str, "瓶内沉淀系果肉成分，请摇匀后饮用果粒橙");
 	request();
 	cout << ((OutputTextToSpeechMessage*)inputMessage)->ret << endl;
 	delete (InputTextToSpeechMessage*)outputMessage;
 	delete (OutputTextToSpeechMessage*)inputMessage;
+	*/
 
 }
 
@@ -100,6 +103,9 @@ size_t MainClient::getInputMessageSize()
 		  break;
 		case TEXTTOSPEECH:
 		  return sizeof(OutputTextToSpeechMessage);
+			break;
+		case SPEECHTOTEXT:
+		  return sizeof(OutputSpeechToTextMessage);
 			break;
 		case SERVERLIBRARY:
 		  return sizeof(OutputServerlibraryMessage);
@@ -126,6 +132,9 @@ size_t MainClient::getOutputMessageSize()
 		  break;
 		case TEXTTOSPEECH:
 		  return sizeof(InputTextToSpeechMessage);
+			break;
+		case SPEECHTOTEXT:
+		  return sizeof(InputSpeechToTextMessage);
 			break;
 		case SERVERLIBRARY:
 		  return sizeof(InputServerlibraryMessage);

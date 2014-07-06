@@ -1,1 +1,1 @@
-/home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/CMakeFiles/ServerlibraryMain.dir
+/home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/CMakeFiles/ServerlibraryMain.dir

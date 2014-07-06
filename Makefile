@@ -2,7 +2,7 @@
 all : MasterMain ServerTester1Main ClientTester1Main \
                  ServerQrobotMain ClientQrobotMain \
 								 ServerCameraMain ClientCameraMain \
-								 TextToSpeechMain \
+								 TextToSpeechMain SpeechToTextMain\
                  main
 
 MasterMain : MasterMain.o Master.o Server.o 
@@ -79,18 +79,29 @@ ClientCamera.o : ClientCamera.cpp ClientCamera.h Client.h ServerCameraMessage.h 
 main : main.o MainClient.o Client.o
 	g++ -o main main.o MainClient.o Client.o
 
-main.o : main.cpp MainClient.h Client.h ServerCameraMessage.h ServerTester1Message.h MasterMessage.h TextToSpeechMessage.h
+main.o : main.cpp MainClient.h Client.h ServerCameraMessage.h ServerTester1Message.h MasterMessage.h TextToSpeechMessage.h SpeechToTextMessage.h ServerlibraryMessage.h
 	g++ -c main.cpp
 
-MainClient.o : MainClient.cpp MainClient.h Client.h ServerCameraMessage.h ServerTester1Message.h MasterMessage.h TextToSpeechMessage.h ServerQrobotMessage.h
+MainClient.o : MainClient.cpp MainClient.h Client.h ServerCameraMessage.h ServerTester1Message.h MasterMessage.h TextToSpeechMessage.h SpeechToTextMessage.h ServerQrobotMessage.h
 	g++ -c MainClient.cpp
 
-TextToSpeechMain : TextToSpeech.o Server.o
-	g++ -o TextToSpeechMain TextToSpeech.o Server.o -L"lib" -lmsc -ldl -lrt
+TextToSpeechMain : TextToSpeech.o Server.o sndwav_common.o wav_parser.o
+	g++ -o TextToSpeechMain TextToSpeech.o Server.o sndwav_common.o wav_parser.o -L"lib" -lmsc -ldl -lrt -lasound
 
 TextToSpeech.o : TextToSpeech.cpp TextToSpeech.h Server.h TextToSpeechMessage.h MasterMessage.h
 	g++ -c TextToSpeech.cpp
 
+SpeechToTextMain : SpeechToText.o Server.o sndwav_common.o wav_parser.o
+	g++ -o SpeechToTextMain SpeechToText.o Server.o sndwav_common.o wav_parser.o -L"lib" -lmsc -ldl -lrt -lasound
+
+SpeechToText.o : SpeechToText.cpp SpeechToText.h Server.h SpeechToTextMessage.h MasterMessage.h
+	g++ -c SpeechToText.cpp
+
+sndwav_common.o : sndwav_common.cpp sndwav_common.h wav_parser.h
+	g++ -c sndwav_common.cpp
+
+wav_parser.o : wav_parser.cpp wav_parser.h
+	g++ -c wav_parser.cpp
 
 clean : 
 	rm Server.o Client.o \
@@ -102,4 +113,6 @@ clean :
 		 ServerCameraMain ServerCameraMain.o ServerCamera.o \
 		 ClientCameraMain ClientCameraMain.o ClientCamera.o \
 		 TextToSpeechMain TextToSpeech.o \
+		 SpeechToTextMain SpeechToText.o \
+		 sndwav_common.o wav_parser.o \
 		 main main.o MainClient.o

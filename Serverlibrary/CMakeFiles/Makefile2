@@ -47,10 +47,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary
+CMAKE_SOURCE_DIR = /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary
+CMAKE_BINARY_DIR = /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary
 
 #=============================================================================
 # Target rules for target CMakeFiles/ServerlibraryMain.dir
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serve
 CMakeFiles/ServerlibraryMain.dir/all:
 	$(MAKE) -f CMakeFiles/ServerlibraryMain.dir/build.make CMakeFiles/ServerlibraryMain.dir/depend
 	$(MAKE) -f CMakeFiles/ServerlibraryMain.dir/build.make CMakeFiles/ServerlibraryMain.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/CMakeFiles  1 2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/CMakeFiles  1 2
 	@echo "Built target ServerlibraryMain"
 .PHONY : CMakeFiles/ServerlibraryMain.dir/all
 
@@ -69,9 +69,9 @@ all: CMakeFiles/ServerlibraryMain.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ServerlibraryMain.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ServerlibraryMain.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yanyg/GraduateCourse/Robot/project/socketPlatform/ServerLibrary/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yanyg/GraduateCourse/Robot/project/socketPlatform/Serverlibrary/CMakeFiles 0
 .PHONY : CMakeFiles/ServerlibraryMain.dir/rule
 
 # Convenience name for target.
