@@ -30,10 +30,10 @@
 #include "wav_parser.h"  
 #include "sndwav_common.h"  
   
-#define DEFAULT_CHANNELS         (2)  
-#define DEFAULT_SAMPLE_RATE      (8000)  
+#define DEFAULT_CHANNELS         (1)  
+#define DEFAULT_SAMPLE_RATE      (16000)  
 #define DEFAULT_SAMPLE_LENGTH    (16)  
-#define DEFAULT_DURATION_TIME    (10)  
+#define DEFAULT_DURATION_TIME    (5) 
 
 typedef int SR_DWORD;
 typedef short int SR_WORD ;

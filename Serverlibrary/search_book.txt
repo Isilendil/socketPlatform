@@ -1,5 +1,5 @@
-Machine learning :·an artificial intelligence approach /		contributing authors, John Anderson ... [et al.] ; editors, Ryszard S. Michalski, Jaime G. Carbonell, Tom M. Mitchell.		
-Machine learning :·proceedings of the seventh international conference (1990), University of Texas, Austin, Texas, June 21-23, 1990 /		editor/workshop chairs, Bruce Porter and Raymond Mooney ; sponsors, Office of Naval Research, Artificial Intelligence and Robotics Program ... [et al.].		
-机器学习		(美) Tom M. Mitchell著		
-机器学习与数据挖掘		(美) Ryszard S. Michalski, Ivan Bratko, Miroslav Kubat等著		
-Machine learning :·ECML 2002·Lecture notes in computer science,·Lecture notes in computer science ;·ECML 2002 : 13th European Conference on Machine Learning, Helsinki, Finland, August 19-23, 2002 : proceedings /		Tapio Elomaa, Heikki Mannila, Hannu Toivonen (eds.).		
+人工智能		王永庆著		
+IBM-PC机编译型PROLOG语言		李卫华等编译		
+人工智能		杨祥金,蔡庆生编著		
+人工智能及其应用		涂序彦编著		
+人工智能原理		(美)尼尔森(Nilsson,N.J.)著		

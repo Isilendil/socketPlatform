@@ -53,8 +53,9 @@ void MainClient::run()
 
 	
 
-	//查询书籍
 	/*
+	//查询书籍
+	char *bookName = "人工智能";
 	char path[100];
 	myLookup("Serverlibrary");
 	type = SERVERLIBRARY;

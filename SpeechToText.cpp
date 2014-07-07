@@ -49,9 +49,9 @@ void run_iat(const char* src_wav_filename ,  const char* param, char *result)
 		{
 			break;
 		}
-		printf("csid=%s,count=%d,aus=%d,",sessionID,pcmCount/len,audStat);
+		//printf("csid=%s,count=%d,aus=%d,",sessionID,pcmCount/len,audStat);
 		ret = QISRAudioWrite(sessionID, (const void *)&pPCM[pcmCount], len, audStat, &epStatus, &recStatus);
-		printf("eps=%d,rss=%d,ret=%d\n",epStatus,recStatus,ret);
+		//printf("eps=%d,rss=%d,ret=%d\n",epStatus,recStatus,ret);
 		if (ret != 0)
 			break;
 		pcmCount += (long)len;

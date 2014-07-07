@@ -288,8 +288,4 @@ def library(userid, passwd, way):
         finance = [debt,bill]
         return finance
 
-result = library('B1321033460','5355365','shelf')
-for i in range(len(result)):
-  for eachKey in result[i]:
-    print result[i][eachKey]
 

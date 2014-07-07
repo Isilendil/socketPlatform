@@ -89,19 +89,19 @@ TextToSpeechMain : TextToSpeech.o Server.o sndwav_common.o wav_parser.o
 	g++ -o TextToSpeechMain TextToSpeech.o Server.o sndwav_common.o wav_parser.o -L"lib" -lmsc -ldl -lrt -lasound
 
 TextToSpeech.o : TextToSpeech.cpp TextToSpeech.h Server.h TextToSpeechMessage.h MasterMessage.h
-	g++ -c TextToSpeech.cpp
+	g++ -c TextToSpeech.cpp -Wno-write-strings
 
 SpeechToTextMain : SpeechToText.o Server.o sndwav_common.o wav_parser.o
 	g++ -o SpeechToTextMain SpeechToText.o Server.o sndwav_common.o wav_parser.o -L"lib" -lmsc -ldl -lrt -lasound
 
 SpeechToText.o : SpeechToText.cpp SpeechToText.h Server.h SpeechToTextMessage.h MasterMessage.h
-	g++ -c SpeechToText.cpp
+	g++ -c SpeechToText.cpp -Wno-write-strings
 
 sndwav_common.o : sndwav_common.cpp sndwav_common.h wav_parser.h
-	g++ -c sndwav_common.cpp
+	g++ -c sndwav_common.cpp -Wno-write-strings
 
 wav_parser.o : wav_parser.cpp wav_parser.h
-	g++ -c wav_parser.cpp
+	g++ -c wav_parser.cpp -Wno-write-strings
 
 clean : 
 	rm Server.o Client.o \

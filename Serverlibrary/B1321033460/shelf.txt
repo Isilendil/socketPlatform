@@ -4,8 +4,8 @@ UML面向对象建模与设计
 Java快速入门与商用项目培训		
 法语·1		
 Visual C++开发实战		
-你必须知道的261个Java语言问题		
 UNIX从入门到精通		
+你必须知道的261个Java语言问题		
 A first course in database systems =·数据库系统基础教程·HZ books·数据库系统基础教程 /		
 Programming pearls =·编程珠玑·图灵程序设计丛书·编程珠玑 /		
 网络安全基础		
