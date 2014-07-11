@@ -20,7 +20,6 @@ Master::Master()
 	myAddress.sin_family = AF_INET;
 	myAddress.sin_addr.s_addr = INADDR_ANY;
 	myAddress.sin_port = htons(4444);
-	port = 4444;
 
 	if((listenSocket = socket(PF_INET, SOCK_STREAM, 0)) < 0)
 	{

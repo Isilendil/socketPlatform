@@ -28,9 +28,13 @@ public:
 	int serverRegister(std::string className);
 	int clientLookup(std::string className);
   
-  void work();
 
 protected:
+  void work();
+
+	size_t getInputMessageSize();
+	size_t getOutputMessageSize();
+
   std::vector<ServerRecord> serverInformation;
 
 private:
@@ -38,9 +42,6 @@ private:
 
   InputMasterMessage *myInput;
 	OutputMasterMessage *myOutput;
-
-	size_t getInputMessageSize();
-	size_t getOutputMessageSize();
 
 };
 

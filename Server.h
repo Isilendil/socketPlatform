@@ -38,7 +38,6 @@ protected:
 	struct sockaddr_in myAddress;
 	struct sockaddr_in clientAddress;
 
-  int port;
  
 	virtual void work() = 0;
 
