@@ -26,7 +26,7 @@ MainClient::~MainClient()
 void MainClient::run()
 {
 	//开启摄像头
-	/*
+	
 	myLookup("ServerCamera");
 	type = SERVERCAMERA;
 	outputMessage = new InputServerCameraMessage;
@@ -35,10 +35,11 @@ void MainClient::run()
 	request();
 	delete (InputServerCameraMessage*)outputMessage;
 	delete (OutputServerCameraMessage*)inputMessage;
-	*/
+	
 
 	
 
+	
 	//接收语音输入
 	//char bookName[25] = "machine learning";
 	myLookup("SpeechToText");
@@ -47,22 +48,24 @@ void MainClient::run()
 	inputMessage = new OutputSpeechToTextMessage;
 	((InputSpeechToTextMessage*)outputMessage)->input = true;
 	request();
+	std::string bookName = string(((OutputSpeechToTextMessage*)inputMessage)->result);
 	cout << string(((OutputSpeechToTextMessage*)inputMessage)->result);
 	delete (InputSpeechToTextMessage*)outputMessage;
 	delete (OutputSpeechToTextMessage*)inputMessage;
+	
 
 	
 
-	/*
+	
 	//查询书籍
-	char *bookName = "人工智能";
+	//char *bookName = "人工智能";
 	char path[100];
 	myLookup("Serverlibrary");
 	type = SERVERLIBRARY;
 	outputMessage = new InputServerlibraryMessage;
 	inputMessage = new OutputServerlibraryMessage;
 	((InputServerlibraryMessage*)outputMessage)->commandName = searchbookbytitle;
-	strcpy(((InputServerlibraryMessage*)outputMessage)->book, bookName);
+	strcpy(((InputServerlibraryMessage*)outputMessage)->book, bookName.c_str());
 	cout << string(((InputServerlibraryMessage*)outputMessage)->book) << endl;
 	request();
 	strcpy(path, ((OutputServerlibraryMessage*)inputMessage)->path);
@@ -71,21 +74,34 @@ void MainClient::run()
 
 	//获得结果
 	cout << string(path) << endl;
+	ifstream input(path);
+	std::string content;
+
+	/*
+	while(input >> content)
+	{
+		cout << content << endl;
+	}
 	*/
-	
 
 	//播放结果
-	/*
+  	
 	myLookup("TextToSpeech");
 	type = TEXTTOSPEECH;
 	outputMessage = new InputTextToSpeechMessage;
 	inputMessage = new OutputTextToSpeechMessage;
-	strcpy(((InputTextToSpeechMessage*)outputMessage)->str, "瓶内沉淀系果肉成分，请摇匀后饮用果粒橙");
+
+  while(input >> content)
+	{
+	strcpy(((InputTextToSpeechMessage*)outputMessage)->str, content.c_str());
 	request();
 	cout << ((OutputTextToSpeechMessage*)inputMessage)->ret << endl;
+	}
 	delete (InputTextToSpeechMessage*)outputMessage;
 	delete (OutputTextToSpeechMessage*)inputMessage;
-	*/
+	
+	
+	input.close();
 
 }
 

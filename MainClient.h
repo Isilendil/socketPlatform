@@ -4,6 +4,8 @@
 #ifndef _MAIN_CLIENT_H
 #define _MAIN_CLIENT_H_
 
+#include <fstream>
+
 #include "Client.h"
 
 #include "ServerTester1Message.h"
